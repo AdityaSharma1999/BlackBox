@@ -288,6 +288,7 @@ public class BlackBox
             }
 
         }
+        int count=0;
         boolean ALLCORRECT=true;
         for(int i=0;i<box.length;i++)
         {
@@ -295,27 +296,20 @@ public class BlackBox
             {
                 if(box[i][j]=='*')
                 {
-                    if((!(a1==i||b1==i||c1==i))&&(!(a2==j||b2==j||c2==j)))
+                    if(!((a1==i+1&&a2==j+1)||(b1==i+1)&&(b2==j+1)||(c1==i+1)&&c2==j+1))
                     {
                         ALLCORRECT=false;
+//                        System.out.println("TRUE HO GAYA");
                     }
+                    count++;
                 }
             }
+        }
+        if(count!=3)
+        {
+            ALLCORRECT=false;
         }
 
-        for(int i=0;i<box.length;i++)
-        {
-            for(int j=0;j<box.length;j++)
-            {
-                if((a1==i||b1==i||c1==i)&&(a2==j||b2==j||c2==j))
-                {
-                    if(box[i][j]!='*')
-                    {
-                        ALLCORRECT=false;
-                    }
-                }
-            }
-        }
 
         if(getscore()<high_score&&ALLCORRECT)
         {
@@ -323,10 +317,22 @@ public class BlackBox
         }
         if(ALLCORRECT)
         {
+
             System.out.println("Thank you for playing the game! Your score is "+high_score);
         }
         if(!ALLCORRECT)
         {
+//            for(int i=0;i<box.length-1;i++)
+//            {
+//                for(int j=0;j<box.length-1;j++)
+//                {
+//                    if(box[i][j]=='*')
+//                    {
+//                        System.out.println((i+1)+" HAHAH "+(j+1));;
+//                    }
+//
+//                }
+//            }
             System.out.println("You failed the game:(");
         }
     }
