@@ -98,25 +98,9 @@ public class BlackBox
         this.score=score;
     }
 
-    /**
-     * The initialize funtion
-     */
+
     public static void initialize()
     {
-        //Todo:initialise the Box[][]
-        //Todo: place the 'X' and the '#'
-        // Todo: place 3 '0''s randomly.
-        // for  5*5 example
-        /*1  2  3  4  5  6  7
-         ======================
-        1|X |# |# |# |# |# |X |
-        2|# |  |  |  |  |  |# |
-        3|# |  |  |  |  |  |# |
-        4|# |  |  |  |  |  |# |
-        5|# |  |  |  |  |  |# |
-        6|# |  |  |  |  |  |# |
-        7|X |# |# |# |# |# |X |
-         ======================*/
         box=new char[size+2][size+2];
         for(int i=0;i<box.length;i++)
         {
@@ -212,15 +196,8 @@ public class BlackBox
 
     }
 
-    /**
-     * The playgame funtion opens the first cell and is the main controller for the game. It calls various function when needed.
-     */
     public static void playgame()
     {
-        //Todo:Take input of a guess or hint from the user.
-        //Todo:Check for valid input
-        //Todo:call required functions
-        //Todo:keep tab on score.
         Scanner Aditya=new Scanner(System.in);
         String userInput="Time to play BlackBox";
         while(!((numball==0)&&(userInput.equals("submit")))) {
@@ -336,24 +313,10 @@ public class BlackBox
             System.out.println("You failed the game:(");
         }
     }
-    /**
-     * The printbox funtion prints out the matrix in a particular format as given in the handout.
-     */
+   
     public static void printbox()
     {
-        //Todo:print the box in the correct order
-        // for  5*5 example
-        /* 1  2  3  4  5  6  7
-         ======================
-        1|X |# |# |# |# |# |X |
-        2|# |  |  |  |  |  |# |
-        3|# |  |  |  |  |  |# |
-        4|# |  |  |  |  |  |# |
-        5|# |  |  |  |  |  |# |
-        6|# |  |  |  |  |  |# |
-        7|X |# |# |# |# |# |X |
-         ======================*/
-        //place the guesses as the come and print the balls when the player enter sumbit.
+
         if(size==5)
         {
             System.out.println(" 1  2  3  4  5  6  7  ");
@@ -438,17 +401,7 @@ public class BlackBox
         }
 
     }
-
-    /**
-     * The check function takes in the row and column in the matrix, checks for Hit (H), Reflection (R) or Divergence(#num)
-     *
-     */
     public static void check(int i,int j) {
-        //Todo:place a guess when the input of i and j are valid
-        //Todo:Check for a Hit
-        //Todo:Check for a reflection
-        //Todo:Check for a bounce
-        //Todo:Print a statement telling the user they cannot place a fourth ball.
         boolean letsHit=hitcheck(i,j);
         boolean letsReflect=false;
         boolean letsDeflect=false;
@@ -491,12 +444,8 @@ public class BlackBox
         }
     }
 
-    /**
-     * The straightRay funtion takes in the row and column in the matrix, checks for Straight ray
-     *
-     */
     public static boolean straightRay(int i,int j) {
-        //todo: check if the ray is a straight ray as defined in the handout
+
 //        if(!deflectionCheck(i,j)) {
 //            System.out.println(numlink+" HAHAHA");
             if (i == 1) {
@@ -569,12 +518,8 @@ public class BlackBox
 //        }
         return false;
     }
-    /**
-     * The check funtion takes in the row and column in the matrix, checks for Reflection (R)
-     *
-     */
+
     public static boolean reflectionCheck(int i,int j) {
-        //todo: check if the ray causes a Reflection as defined in the handout
         if(i>1&&i<box.length&&j>1&&j<box.length)
         {
             return false;
@@ -639,7 +584,6 @@ public class BlackBox
             if(((a1==i+1&&a2==j-1)||(b1==i+1&&b2==j-1)||(c1==i+1&&c2==j-1))||((a1==i-1&&a2==j-1)||(b1==i-1&&b2==j-1)||(c1==i-1&&c2==j-1)))
             {
                 box[i-1][j-1]='R';
-//                System.out.println("R is HERE!!!!!!!!!!!!!!!!!");
                 return true;
             }
             for(int column=2;column<box.length-1;column++)
@@ -647,7 +591,6 @@ public class BlackBox
                 if(((a1==i+1&&a2==column-1)||(b1==i+1&&b2==column-1)||(c1==i+1&&c2==column-1))&&((a1==i-1&&a2==column-1)||(b1==i-1&&b2==column-1)||(c1==i-1&&c2==column-1)))
                 {
                     box[i-1][j-1]='R';
-//                    System.out.println("R is HERE!!!!!!!!!!!!!!");
                     return true;
                 }
             }
@@ -683,12 +626,8 @@ public class BlackBox
 //        }
         return false;
     }
-    /**
-     * The check funtion takes in the row and column in the matrix, checks for Divergence(#num)
-     *
-     */
+
     public static boolean deflectionCheck(int i,int j) {
-        //todo: check if the ray causes a Deflection as defined in the handout
         if(!reflectionCheck(i,j)) {
             if (i > 1 && i < box.length && j > 1 && j < box.length) {
                 return false;
@@ -784,11 +723,6 @@ public class BlackBox
     }
 
     public static boolean hitcheck(int i,int j){                                                                        //DONE!!!
-        //todo: check if the ray causes a HIT as defined in the handout
-        /**
-         * The hitcheck funtion takes in the row and column in the matrix, checks for Hit (H)
-         *
-         */
         if(i>1&&i<box.length&&j>1&&j<box.length)
         {
             return false;
